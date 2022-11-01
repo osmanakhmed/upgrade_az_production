@@ -1,0 +1,76 @@
+﻿@model List<Upgrade_az.Models.CourseDetail.Course>
+
+@{ ViewData["Title"] = "Course";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="clearfix"></div>
+<!-- ============================================================== -->
+<!-- Top header  -->
+<!-- ============================================================== -->
+<!-- ============================ Page Title Start================================== -->
+<section class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+
+                <div class="breadcrumbs-wrap">
+                    <h1 class="breadcrumb-title">Full Width Courses</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Find Courses</li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ============================ Page Title End ================================== -->
+<!-- ============================ Full Width Courses  ================================== -->
+<section class="pt-0">
+    <div class="container">
+
+        <!-- Onclick Sidebar -->
+
+        <!-- Row -->
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <!-- Row -->
+                <div class="row align-items-center mb-3">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        We found <strong>@ViewBag.CountCourses</strong> courses for you
+                    </div>
+                </div>
+                <!-- /Row -->
+
+                @await Component.InvokeAsync("Course")
+
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+
+                        <!-- Pagination -->
+                        <!-- <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                    <button type="button" class="btn btn-loader">Load More<i class="ti-reload ml-3"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+                        <!-- /Row -->
+
+                    </div>
+
+        </div>
+        <!-- Row -->
+
+    </div>
+</section>
+
+
+<!-- ============================ Full Width Courses End ================================== -->

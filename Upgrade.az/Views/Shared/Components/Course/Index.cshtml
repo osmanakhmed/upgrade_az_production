@@ -1,0 +1,39 @@
+﻿@model List<Upgrade_az.Models.CourseDetail.Course>
+@{
+    Layout = null;
+}
+
+
+
+<div class="row">
+
+
+    @foreach (var course in Model)
+    {
+        <div class="col-lg-4 col-md-6">
+            <div class="education_block_grid">
+
+                <div class="education_block_thumb">
+                    <a asp-action="Details" asp-controller="course" asp-route-id="@course.Id"><img src="~/uploads/@course.Photo"  style="width:100%; height: 300px"; class="img-fluid" alt=""></a>
+                </div>
+
+                <div class="education_block_body">
+                    <h4 class="bl-title"><a asp-action="Details" asp-controller="course" asp-route-id="@course.Id">@course.Title</a></h4>
+                    <p>@Html.Raw(course.CourseDesc)</p>
+                </div>
+
+                <div class="education_block_footer">
+                    <div class="education_block_author">
+                        <div class="path-img">
+                            <a href="#"><img src="~/uploads/teachers/@course.Instructor.Photo" class="img-fluid" alt=""></a>
+                        </div>
+                        <h5><a href="#">@course.Instructor.FullName</a></h5>
+                    </div>
+                    <span class="education_block_time"><i class="ti-time mr-1"></i>@course.LecturePeriod weeks</span>
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>

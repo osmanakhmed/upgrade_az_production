@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Upgrade_az.Models.CourseDetail.Course>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5" style="width: 90%!important">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Courses</h1>
+        <a asp-area="admin" asp-controller="course" asp-action="create" class="btn btn-outline-success">New Course</a>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Photo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Instructor)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                <img style="max-width: 100px;" src="~/uploads/@item.Photo" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Instructor.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.Name)
+                            </td>
+                            <td>
+                                <a asp-area="admin" asp-controller="course" asp-action="edit" asp-route-id=@item.Id>
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-area="admin" asp-controller="course" asp-action="delete" asp-route-id=@item.Id onclick="return confirm('Are you sure?')" class="text-danger p-2">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

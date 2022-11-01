@@ -1,0 +1,25 @@
+﻿@model List<Upgrade_az.Models.CourseDetail.Instructor>
+@{
+    Layout = null;
+}
+
+<div class="row">
+
+    @foreach (var instructor in Model)
+    {
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+            <div class="teacher__item text-center grey-bg-5 transition-3 mb-30">
+                <div class="teacher__thumb w-img fix">
+                    <a href="#">
+                        <img src="~/uploads/teachers/@instructor.Photo" alt="@instructor.FullName" style="width:315px; height:315px;">
+                    </a>
+                </div>
+                <div class="teacher__content">
+                    <h3 class="teacher__title">@instructor.FullName,</h3>
+                    <span>@instructor.Position</span>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

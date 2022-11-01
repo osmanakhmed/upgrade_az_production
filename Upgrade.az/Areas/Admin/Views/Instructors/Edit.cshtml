@@ -1,0 +1,80 @@
+﻿@model Upgrade_az.Models.CourseDetail.Instructor
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5" style="width: 90%!important">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Instructors</h1>
+        <a asp-controller="instructors" asp-action="create" class="btn btn-outline-success">New Category</a>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Position" class="control-label"></label>
+                    <input asp-for="Position" class="form-control" />
+                    <span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-8">
+                        <div class="wrapper">
+                            <div class="upload-container">
+                                <div class="border-container">
+                                    <div class="icons fa-4x">
+                                        <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
+                                        <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
+                                        <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+                                    </div>
+                                    <input type="file" asp-for="Upload" class="form-control" style="height:38px;" />
+                                    <span asp-validation-for="Upload" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 pt-xl-5">
+                        <img class="image-preview img-fluid" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn btn-outline-primary" >Back to List</a>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/js/upload.js"></script>
+    <script>
+            $(document).ready(function () {
+                CKEDITOR.replace('Text');
+                $("#Upload").change(function () {
+
+                    var file = this.files[0]
+
+                    var fileReader = new FileReader();
+
+                    fileReader.onload = function (e) {
+                        $(".image-preview").attr("src", e.target.result);
+                    };
+                    fileReader.readAsDataURL(file, "UTF-8");
+                });
+            });
+    </script>
+}

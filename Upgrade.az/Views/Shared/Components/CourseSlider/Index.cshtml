@@ -1,0 +1,40 @@
+﻿@model List<Upgrade_az.Models.CourseDetail.Course>
+@{
+    Layout = null;
+}
+
+
+
+
+@foreach (var courseslider in Model)
+{
+    <div class="singles_items">
+        <div class="education_block_grid style_2" style="max-width:400px;">
+            <div class="education_block_thumb n-shadow">
+                <a asp-action="Details" asp-controller="course" asp-route-id="@courseslider.Id"><img src="~/uploads/@courseslider.Photo" style="max-width:363px; min-height:363px;" class="img-fluid" alt=""></a>
+                <div class="cources_price">@courseslider.Category.Name</div>
+            </div>
+
+            <div class="education_block_body">
+                <h4 class="bl-title"><a asp-action="Details" asp-controller="course" asp-route-id="@courseslider.Id">@courseslider.Title</a></h4>
+            </div>
+
+            <div class="cources_info_style3">
+                <ul>
+                    <li><i class="ti-time mr-2"></i>One Lesson equals to @courseslider.LectureHour</li>
+                </ul>
+            </div>
+
+            <div class="education_block_footer">
+                <div class="education_block_author">
+                    <div class="path-img"><a href="#"><img src="~/uploads/teachers/@courseslider.Instructor.Photo" class="img-fluid" alt="@courseslider.Instructor.FullName"></a></div>
+                    <h5><a href="#">@courseslider.Instructor.FullName</a></h5>
+                </div>
+                <div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>@courseslider.LecturePeriod weeks</div>
+            </div>
+        </div>
+    </div>
+
+
+}
+

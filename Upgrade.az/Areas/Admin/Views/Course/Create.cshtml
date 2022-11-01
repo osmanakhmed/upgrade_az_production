@@ -1,0 +1,153 @@
+﻿@model Upgrade_az.Models.CourseDetail.Course
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container w-75 ">
+    <div class="d-flex justify-content-center">
+        <h1>Create Course</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 m-3">
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Course Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InstructorId" class="control-label"></label>
+                    <select asp-for="InstructorId" class="form-control" asp-items="@ViewBag.Instructors"></select>
+                    <span asp-validation-for="InstructorId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories"></select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-8">
+                        <div class="wrapper">
+                            <div class="upload-container">
+                                <div class="border-container">
+                                    <div class="icons fa-4x">
+                                        <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
+                                        <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
+                                        <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+                                    </div>
+                                    <input type="file" asp-for="Upload" class="form-control" style="height:38px;" />
+                                    <span asp-validation-for="Upload" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 pt-xl-5">
+                        <img class="image-preview img-fluid" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CourseDesc" class="control-label">Course Short Description</label>
+                    <textarea asp-for="CourseDesc" class="form-control"></textarea>
+                    <span asp-validation-for="CourseDesc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Text" class="control-label">Course </label>
+                    <textarea asp-for="Text" class="form-control"></textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LectureCount" class="control-label">Numbers of Lectures in a Week </label>
+                    <input asp-for="LectureCount" class="form-control"/>
+                    <span asp-validation-for="LectureCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LectureHour" class="control-label">One Lecture Hour</label>
+                    <input asp-for="LectureHour" class="form-control"/>
+                    <span asp-validation-for="LectureHour" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LecturePeriod" class="control-label">Total Lesson period</label>
+                    <input asp-for="LecturePeriod" class="form-control"/>
+                    <span asp-validation-for="LecturePeriod" class="text-danger"></span>
+                    <h3>
+                        Syllabus
+                    </h3>
+                    <div class="form-group">
+                        <label class="control-label">Numbers of Syllabus</label>
+                        <input type="number" required min="1" class="form-control" id="syllabus-count" placeholder="Numbers of Syllabu" />
+                    </div>
+                </div>
+                <div class="questions">
+
+
+                </div>
+                <button type="submit" class="btn btn-outline-danger mt-5">Create</button>
+                <hr />
+                <a class="btn btn-danger" asp-area="admin" asp-controller="course" asp-action="index" role="button">Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/js/upload.js"></script>
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('Text');
+            $("#Upload").change(function () {
+
+                var file = this.files[0]
+
+                var fileReader = new FileReader();
+
+                fileReader.onload = function (e) {
+                    $(".image-preview").attr("src", e.target.result);
+                };
+                fileReader.readAsDataURL(file, "UTF-8");
+            });
+        });
+        $("#syllabus-count").bind('keyup mouseup', function () {
+
+            $(".questions").empty();
+            var str = [];
+            for (var i = 1; i <= parseInt($(this).val()); i++) {
+                var stradd = "<div class='form-group'>" +
+                    "<label class='control-label'>Syllabus " + i + " Name</label>" +
+                    "<input type='text' required class='form-control' name='Questions' placeholder='Syllabus Name' />" +
+                    "</div>"
+                var straddinput = "<div class='form-group'>" +
+                    "<label class='control-label'>Lectures of " + i + " Syllabus</label>" +
+                    "<input type='number' id=" + i + " min='1' required class='form-control syllabus-count-stepp' placeholder='Total Lesson' />" +
+                    "</div>" +
+                    "<div class='questionstep" + i + "'></div>"
+                str.push(stradd);
+                str.push(straddinput);
+            }
+            $('.questions').append(str)
+            $('.syllabus-count-stepp').bind('keyup mouseup', function () {
+                var id = $(this).prop('id');
+                $(".questionstep" + id).empty();
+                var str = [];
+                for (var i = 1; i <= parseInt($(this).val()); i++) {
+                    var stradd = "<div class='form-group col-8'>" +
+                        "<label class='control-label'>Lesson " + i + " title</label>" +
+                        "<input type='text' required class='form-control' name='QuestionStepps' placeholder='Lesson Title' />" +
+                        "<input type='hidden' value=" + (parseInt(id) - 1) + " name='SteppOrders'/>" +
+                        "</div>"
+                    str.push(stradd);
+                }
+                $(".questionstep" + id).append(str)
+            })
+
+        });
+
+    </script>
+}
+
+@section Head{
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+}

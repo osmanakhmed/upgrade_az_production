@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+
+                <div class="breadcrumbs-wrap">
+                    <h1 class="breadcrumb-title">Het in Touch</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ============================ Page Title End ================================== -->
+<!-- ============================ Agency List Start ================================== -->
+<section class="bg-light">
+
+    <div class="container">
+
+        <!-- row Start -->
+        <div class="row">
+
+            <div class="col-lg-8 col-md-7">
+                <div id="map" class="contact__info white-bg p-relative z-index-1 card" style="width:100%; height:480px;"></div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-5">
+
+                <div class="prc_wrap">
+
+                    <div class="prc_wrap_header">
+                        <h4 class="property_block_title">Reach Us</h4>
+                    </div>
+
+                    <div class="prc_wrap-body">
+                        <div class="contact-info">
+                            <div class="row">
+
+                                <div class="col-12">
+                                    <h2><a href="">Get In Touch</a></h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="cn-info-detail">
+                                        <div class="cn-info-icon">
+                                            <i class="ti-home"></i>
+                                        </div>
+                                        <div class="cn-info-content">
+                                            <h4 class="cn-info-title">Reach Us</h4>
+                                            Fatali Xan Xoyski 79 <br>(Ganjlik 🚇)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="cn-info-detail">
+                                        <div class="cn-info-icon">
+                                            <i class="ti-email"></i>
+                                        </div>
+                                        <div class="cn-info-content">
+                                            <h4 class="cn-info-title">Drop A Mail</h4>
+                                            <a href="mailto:upgrade.aze@gmail.com">upgrade.aze@gmail.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="cn-info-detail">
+                                        <div class="cn-info-icon">
+                                            <i class="ti-mobile"></i>
+                                        </div>
+                                        <div class="cn-info-content">
+                                            <h4 class="cn-info-title">Call Us</h4>
+                                            <a href="tel:+994505561155 ">+994(50)5561155</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /row -->
+
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        var map;
+
+        function initMap() {
+            const myLatLng = { lat: 40.40095604179525, lng: 49.84866040528088};
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: myLatLng,
+            });
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Upgrade.Az",
+
+            });
+        }
+        initMap()
+
+    </script>
+}

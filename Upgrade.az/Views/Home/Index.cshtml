@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- End Navigation -->
+<div class="clearfix"></div>
+<!-- ============================================================== -->
+<!-- Top header  -->
+<!-- ============================================================== -->
+
+<!-- ============================ Hero Banner  Start================================== -->
+<div class="image-cover hero_banner hero-inner-2 shadow rlt" style="background:url('@Url.Content("~/img/banner-2.jpg")') no-repeat;" data-overlay="7">
+    <div class="elix_img_box">
+        <img src="~/img/preet-o.html" class="img-fluid" alt="" />
+    </div>
+    <div class="container">
+
+        <div class="hero-caption small_wd mb-5">
+            <h1 class="big-header-capt cl_2 mb-0">Learn on your schedule</h1>
+            <p>Study any topic, anytime. Explore thousands of courses for the lowest price ever!</p>
+        </div>
+        <!-- Type -->
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="banner-search shadow_high">
+                    <div class="search_hero_wrapping">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================ Hero Banner End ================================== -->
+<!-- ============================ Trips Facts Start ================================== -->
+<section class="p-0 trips_top">
+    <div class="container">
+        <div class="trips_wrap">
+            <div class="row m-0">
+
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="trips">
+                        <div class="trips_icons">
+                            <i class="ti-video-camera"></i>
+                        </div>
+                        <div class="trips_detail">
+                            <h4>100,000 online courses</h4>
+                            <p>Nor again is there anyone who loves or pursues or desires</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="trips">
+                        <div class="trips_icons">
+                            <i class="ti-medall"></i>
+                        </div>
+                        <div class="trips_detail">
+                            <h4>Expert instruction</h4>
+                            <p>Nam libero tempore, cum soluta and nobis est eligendi optio</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="trips none">
+                        <div class="trips_icons">
+                            <i class="ti-infinite"></i>
+                        </div>
+                        <div class="trips_detail">
+                            <h4>Lifetime access</h4>
+                            <p>These cases are perfectly simple and easy to distinguish</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ============================ Trips Facts Start ================================== -->
+<!-- ============================ Featured Courcses Start ================================== -->
+<section class="min-sec">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 mb-3">
+                <div class="sec-heading2">
+                    <div class="sec-left">
+                        <h3>Featured Courses</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 p-0">
+
+                <div class="arrow_slide three_slide arrow_middle">
+
+                    @await Component.InvokeAsync("CourseSlider")
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- ============================ Featured Courcses End ================================== -->
+<!-- ============================ Featured Category Start ================================== -->
+<section class="bg-light">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 mb-3">
+                <div class="sec-heading2">
+                    <div class="sec-left">
+                        <h3>Got & Popular Categories</h3>
+                    </div>
+                    <div class="sec-right">
+                        <a href="javascript:void(0);" class="btn-br-more">Browse More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 p-0">
+
+                <div class="arrow_slide three_slide-dots arrow_middle">
+
+                    <!-- Single Slide -->
+                    @await Component.InvokeAsync("Category")
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- ============================ Featured Category End ================================== -->
